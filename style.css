@@ -1,11 +1,30 @@
 /* Reset cơ bản */
 * {
     margin: 0;
-    padding: 0;
+    padding-left: 0;
     box-sizing: border-box;
   }
+  html, body {
+    overflow-x: hidden;
+  }
   
-  /* Thiết lập cho body */
+  @media (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Xếp dọc khi màn hình nhỏ */
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .valentines, .rose {
+        transform: scale(0.7); /* Giảm tỷ lệ scale */
+    }
+    
+    .container {
+        gap: 10px;
+    }
+}
+  
   body {
     height: 100vh;
     background-color: #fae1dd;
@@ -15,13 +34,16 @@
     align-items: center;
   }
   
-  /* Container để xếp hàng ngang thiệp và hoa hồng */
   .container {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap; /* Cho phép xuống dòng khi màn hình nhỏ */
     justify-content: center;
-    gap: 50px; /* Khoảng cách giữa thiệp và hoa hồng */
-  }
+    gap: 10px; /* Tăng khoảng cách giữa các phần tử */
+    padding: 40px; /* Thêm đệm để không dính vào viền */
+    max-width: 1000px; /* Giới hạn độ rộng tối đa */
+    margin: 0 auto; /* Căn giữa container */
+}
+  
   
   /* ===== Thiệp Valentine ===== */
   .valentines {
@@ -152,9 +174,9 @@
     position: absolute;
     border-left: 300px solid #f8ad9d;
     border-top: 195px solid transparent;
-    left: -120px;
-    top: -95px;
-    width: 0;
+    left: 0;
+  top: 0;
+  transform: translate(-120px, -95px);
     height: 0;
   }
   
@@ -166,7 +188,8 @@
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.3);
     top: 265px;
-    left: -15px;
+    left: 0px;
+    transform: translateX(-15px);
     animation: scale 3s linear infinite;
     z-index: -1;
   }
@@ -186,7 +209,7 @@
     height: 200px;
     display: inline-block;
     animation: yidon 5s infinite;
-    transform: translateY(40%);
+    /* transform: translateY(20%); */
     position: relative;
   }
   
@@ -261,8 +284,10 @@
   .leaf {
     position: absolute;
     top: 120px;
-    left: -115px;
+    left: 0; /* hoặc left: 115px, tuỳ bạn muốn “điểm neo” ở đâu */
+    transform: translateX(-115px); 
   }
+  
   
   .stem {
     width: 240px;
